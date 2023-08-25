@@ -1,106 +1,159 @@
-let studentRecords = [{ name: 'John', id: 123, marks: 98 },
-{ name: 'Baba', id: 101, marks: 23 },
-{ name: 'yaga', id: 200, marks: 45 },
-{ name: 'Wick', id: 115, marks: 75 }]
-// question1
-let ans = []
-ans = studentRecords.map((e) => e.name.toUpperCase())
-console.log(ans);
-// question2
-let a = studentRecords.filter(check);
-function check(mark) {
-    if (mark.marks > 50) {
-        return mark;
+// question 1
+function consolestatement(){
+    console.log("Hello World");
+}
+consolestatement();
+// question 2
+function sum(n1, n2){
+    
+    console.log(`the sum of the ${n1} and ${n2} is ${n1+n2}`);
+}
+sum(3,4);
+
+// question 3
+hello = () => console.log("Hello World!");
+hello();
+
+// question 4
+//Print output: 
+var x = 21;
+var girl = function () {
+    console.log(x);
+    var x = 20;
+};
+girl ();
+//! Output in detail: 
+/* output is undefined after invoking above girl function because first scope will see scope level variables whether it is  local level or global level after that if same variable is defined two times in global scope and local scope in function then function will take precedence local scope variable and in the above function hoisting is occured i.e using variable before declaration then function will execute console statement prints the undefined as hoisted is occured*/
+
+
+//question 5
+
+var x = 21;
+girl ();
+console.log(x)
+function girl() {
+    console.log(x);
+    var x = 20;
+};
+//! Output in detail: 
+/* output : undefined and 21 
+for above girl function because first scope will see scope level variables whether it is  local level or global level after that if same variable is defined two times in global scope and local scope in function then function will take precedence local scope variable and in the above function hoisting is occured i.e using variable before declaration then function will execute console statement prints the undefined as hoisted is occured
+after involking the girl function will execute console statement prints the global scope variable of X value*/
+
+// question 6
+
+
+var x = 21;
+a();
+b();
+
+  function a() {
+    
+   x = 20;
+  console.log(x);
+};
+ function b() {
+    
+    x = 40;
+   console.log(x);
+};
+/* output is 20 and 40
+reason:after calling function "a" and function "b" as in this function x is global because x is not declared with (let,var)
+       when function "a" excutes it prints x value as "20" 
+       when function "b" excutes it prints x value as "40"*/
+// question 7
+
+function factorial(n){
+    let f=1;
+    for(var i=1; i<=n; i++){
+        f=f*i;
+    }
+    console.log(`factorial of ${n} is ${f}`);
+}
+factorial(5);
+
+// Day 2
+// question 1
+
+function FindSum(a, b){
+    return a + b;
+}
+
+function DisplayData(data, batch){
+    console.log(`i am from ${data} and My batch is EA${batch}`)
+}
+
+DisplayData("PrepBytes", FindSum(10, 9));
+
+/*output is "i am from PrepBytes and My batch is 19"
+Reason:After calling "DisplayData("PrepBytes", FindSum(10, 9))" function the data variable takes value of "PrepBytes" and second is calling FindSum Function as it returns 19 as output and DisplayData second parameter will take 19 as value 
+finally it prints "i am from PrepBytes and My batch is 19"*/
+
+// question 2
+
+
+// Abc();
+// const Abc = function(){
+//     let value = 20;
+//     console.log(value);
+// }
+
+// output is error message i.e Cannot access "Abc" before initialization
+//Reason:After using the accessing "Abc" variable" before intialization it cause hoisting
+
+// question 3
+
+var a = 10;
+(function (){
+    console.log(a);
+    var a = 20;
+})();
+
+//output: undefined
+//Reason: after calling function itsself as varaible "a" is declarng before intailization i.e hoisting and print undefined
+
+const greet =  function(name){
+    return function(m){
+    
+        console.log(`Hi!! ${name}, ${m}`);
     }
 }
-console.log(a);
+  
+const greet_message = greet('EA19');
+greet_message("Welcome To PrepBytes")
 
+// output :Hi!! EA19, Welcome To PrepBytes
 
-// question3
-var sum = 0;
-let b = studentRecords.filter(checks);
-function checks(mark) {
-    if (mark.marks > 50 && mark.id > 120) {
-        return mark;
-    }
-}
-console.log(b);
-//question 4
-for (let i of b) {
-    sum = sum + i.marks;
-}
-console.log("sum of filtered marks:" + sum);
-
-
-
-// question 5
-let names = studentRecords.filter(check1);
-function check1(mark) {
-    if (mark.marks > 50) {
-        return mark;
-    }
-
-}
-console.log("filtered students are", names.map((names) => { return names.name }))
-
-// question6
-s = 0
-let student = studentRecords.filter(check2);
-function check2(mark) {
-    if (mark.id > 120) {
-        return mark.marks;
-    }
-
-}
-for (let i of student) {
-    s = s + i.marks;
-
-}
-console.log("sum of marks of the students with id > 120 : ",s);
+//Reason:after calling greet function by passing varaible value as "EA19" varaiable name will store "EA19" this function will return "function(m)" and assigned this to greet_message as code 
+// after calling greet_message by passing "Welcome To PrepBytes" will return Hi!! EA19, Welcome To PrepBytes as output
 
 
 
 
-// question7
-var students = studentRecords.map((x) => x.marks > 50 ? x.marks : x.marks + 15);
-let filtered = students.filter((x) => x > 50);
-let sums = filtered.reduce((sums, x) => sums + x);
-console.log("students with marks greater than 50 after a grace of 15 marks :",sums);
 
 
-//question 8
-function studentDetails(Name, Class, Roll) {
-    this.name = Name,
-        this.class = Class,
-        this.rollNo = Roll;
-}
-let studentobjectArray = [];
-let stud1 = new studentDetails("sai", "CSE", 10);
-let stud2 = new studentDetails("kishore", "CSE", 10);
-let stud3 = new studentDetails("shashi", "CSE", 43);
-let stud4 = new studentDetails("purna", "CE", 18);
-let stud5 = new studentDetails("harsha", "CSE", 30);
-let stud6 = new studentDetails("teja", "CSE", 65);
 
-studentobjectArray.push(stud1, stud2, stud3, stud4, stud5, stud6);
-console.log(studentobjectArray);
+
+
+// button actions
 
 isclicked=true;
 function code1(){
     if(isclicked){
-    document.getElementById("code1").innerHTML="Hide";
-    document.getElementById("show1").style.display="block";
-    isclicked=false;
-
+        document.getElementById("code1").innerHTML="Hide";
+        document.getElementById("show1").style.display="block";
+        isclicked=false;
+        
     }
     else{
         document.getElementById("code1").innerHTML="show output";
         document.getElementById("show1").style.display="none";
         isclicked=true;
     }
-
+    
 }
 
+isclicked=true;
 function code2(){
     if(isclicked){
     document.getElementById("code2").innerHTML="Hide";
@@ -203,6 +256,43 @@ function code8(){
         isclicked=true;
     }
 
+}
+function code9(){
+    if(isclicked){
+    document.getElementById("code9").innerHTML="Hide";
+    document.getElementById("show9").style.display="block";
+    isclicked=false;
+    }
+    else{
+        document.getElementById("code9").innerHTML="show output";
+        document.getElementById("show9").style.display="none";
+        isclicked=true;
+    }
+}
+
+function code10(){ 
+    if(isclicked){
+    document.getElementById("code10").innerHTML="Hide";
+    document.getElementById("show10").style.display="block";
+    isclicked=false;
+    }
+    else{
+        document.getElementById("code10").innerHTML="show output";
+        document.getElementById("show10").style.display="none";
+        isclicked=true;
+    }
+}
+function code11(){
+    if(isclicked){
+    document.getElementById("code11").innerHTML="Hide";
+    document.getElementById("show11").style.display="block";
+    isclicked=false;
+    }
+    else{
+        document.getElementById("code11").innerHTML="show output";
+        document.getElementById("show11").style.display="none";
+        isclicked=true;
+    }
 }
 
 

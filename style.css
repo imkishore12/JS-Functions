@@ -116,4 +116,6 @@ img{
   }
   body{
     background-color: rgb(170, 182, 192);
+    border: 4px groove black;
+    padding: 5px;
   }
